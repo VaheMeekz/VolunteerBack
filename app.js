@@ -6,6 +6,10 @@ var logger = require('morgan');
 const cors = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const adminRoute = require('./routes/admin')
+const homeBannerRouter = require('./routes/homeBanner')
+const homeAbout = require("./routes/homeAbout")
+const homeWeDo = require("./routes/homeWeDo")
 require('dotenv').config()
 var app = express();
 app.use(cors)
@@ -21,6 +25,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/api/v1/admin', adminRoute)
+app.use('/api/v1/homeBanner', homeBannerRouter)
+app.use('/api/v1/homeAbout', homeAbout)
+app.use('/api/v1/homeWeDo', homeWeDo)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
