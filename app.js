@@ -10,9 +10,14 @@ const adminRoute = require('./routes/admin')
 const homeBannerRouter = require('./routes/homeBanner')
 const homeAbout = require("./routes/homeAbout")
 const homeWeDo = require("./routes/homeWeDo")
+const newsRouter = require("./routes/news")
+const workRouter = require("./routes/work")
+const contactsRouter = require('./routes/contacts')
+const contactUsRouter = require('./routes/contactUs')
+const aboutUsRouter = require('./routes/aboutUs')
 require('dotenv').config()
 var app = express();
-app.use(cors)
+app.use(cors())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -29,6 +34,11 @@ app.use('/api/v1/admin', adminRoute)
 app.use('/api/v1/homeBanner', homeBannerRouter)
 app.use('/api/v1/homeAbout', homeAbout)
 app.use('/api/v1/homeWeDo', homeWeDo)
+app.use('/api/v1/news', newsRouter)
+app.use('/api/v1/work', workRouter)
+app.use('/api/v1/contacts', contactsRouter)
+app.use('/api/v1/contactUs', contactUsRouter)
+app.use('/api/v1/aboutUs',aboutUsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
