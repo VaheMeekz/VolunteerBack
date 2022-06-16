@@ -15,13 +15,12 @@ const create = async (req, res) => {
 
 const edit = async (req,res) => {
     try {
-        const {id,titleHy, titleRu, titleEn, video} = req.body
+        const {id,titleHy,  titleEn, video} = req.body
 
         const slide = await Banner.findOne({
             where:{id}
         })
         slide.titleHy = titleHy
-        slide.titleRu = titleRu
         slide.titleEn = titleEn
         slide.video = video
         await slide.save()

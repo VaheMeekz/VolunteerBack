@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors')
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const adminRoute = require('./routes/admin')
 const homeBannerRouter = require('./routes/homeBanner')
 const homeAbout = require("./routes/homeAbout")
@@ -29,16 +28,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/api/v1/admin', adminRoute)
-app.use('/api/v1/homeBanner', homeBannerRouter)
-app.use('/api/v1/homeAbout', homeAbout)
-app.use('/api/v1/homeWeDo', homeWeDo)
-app.use('/api/v1/news', newsRouter)
-app.use('/api/v1/work', workRouter)
-app.use('/api/v1/contacts', contactsRouter)
-app.use('/api/v1/contactUs', contactUsRouter)
-app.use('/api/v1/aboutUs',aboutUsRouter)
+app.use('/api/v1/admin', adminRoute) //+
+app.use('/api/v1/homeBanner', homeBannerRouter) //+
+app.use('/api/v1/homeAbout', homeAbout)//+
+app.use('/api/v1/homeWeDo', homeWeDo) //+
+app.use('/api/v1/news', newsRouter) //+
+app.use('/api/v1/work', workRouter) //+
+app.use('/api/v1/contacts', contactsRouter) //+
+app.use('/api/v1/contactUs', contactUsRouter) //+-
+app.use('/api/v1/aboutUs',aboutUsRouter)//+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

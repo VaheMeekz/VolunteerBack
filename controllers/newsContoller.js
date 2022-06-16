@@ -1,9 +1,23 @@
 const News = require("../models").News
-
+const {Op} = require('sequelize');
 const getAll = async (req, res) => {
     try {
-        const news = await News.findAll()
-        return res.json(news)
+        const {search} = req.query
+        const offset = Number.parseInt(req.query.offset) || 0;
+        const limit = Number.parseInt(req.query.limit) || 8;
+        let queryObj = {}
+        if (search) {
+            queryObj["titleHy"] = {
+                [Op.substring]: String(search)
+            }
+        }
+        const all = await News.findAll()
+        const news = await News.findAll({
+            where: queryObj,
+            offset: offset * limit,
+            limit,
+        })
+        return res.json({products:news,count:all.length})
     } catch (e) {
         console.log("something went wrong", e)
     }

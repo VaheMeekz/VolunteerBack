@@ -9,5 +9,6 @@ router.get('/single',workController.getSingle)
 //admin routes
 router.post('/',adminMiddleware,workController.create)
 router.post('/delete',adminMiddleware,workController.deleteItem)
+router.post('/edit',adminMiddleware,workController.edit)
 
 module.exports = router

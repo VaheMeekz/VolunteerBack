@@ -11,13 +11,11 @@ const getAll =async (req,res) => {
 
 const edit = async (req,res) => {
     try{
-        const {titleHy,titleRu,titleEn,textHy,textRu,textEn,image} = req.body
+        const {titleHy,titleEn,textHy,textEn,image} = req.body
         const about =await About.findOne({where:{id:1}})
         about.titleHy = titleHy
-        about.titleRu = titleRu
         about.titleEn = titleEn
         about.textHy = textHy
-        about.textRu = textRu
         about.textEn = textEn
         about.image = image
         await about.save()

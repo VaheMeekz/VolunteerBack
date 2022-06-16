@@ -2,13 +2,28 @@ const Work = require("../models").Works
 const WorkPlus = require("../models").WorkPlus
 const WorkGov = require("../models").WorkGoverment
 const WorkWin = require("../models").WorkWin
+const {Op} = require('sequelize');
 
 const getAll = async (req,res) => {
     try {
+        const {search} = req.query
+        const offset = Number.parseInt(req.query.offset) || 0;
+        const limit = Number.parseInt(req.query.limit) || 8;
+        let queryObj = {}
+        if (search) {
+            queryObj["titleHy"] = {
+                [Op.substring]: String(search)
+            }
+        }
+        const all = await Work.findAll();
         const news = await Work.findAll({
-            include:[WorkGov,WorkPlus,WorkWin]
+            include:[WorkGov,WorkPlus,WorkWin],
+            where: queryObj,
+            offset: offset * limit,
+            limit,
         });
-        return res.json(news);
+
+        return res.json({news,count:all.length});
     }catch (e) {
         console.log("something went wrong",e);
     }
@@ -30,21 +45,21 @@ const create = async (req,res) => {
         const newWork = await Work.create({
             titleHy,titleEn,descriptionHy,descriptionEn,month,day
         });
-        plus.split(",").forEach(async i=>{
+        plus.forEach(async i=>{
             await WorkPlus.create({
                 workId:newWork.id,
                 descriptionHy: i.descriptionHy,
                 descriptionEn: i.descriptionEn
             })
         });
-        gov.split(",").forEach(async i=>{
+        gov.forEach(async i=>{
             await WorkGov.create({
                 workId:newWork.id,
                 descriptionHy: i.descriptionHy,
                 descriptionEn: i.descriptionEn
             })
         });
-        win.split(",").forEach(async i=>{
+        win.forEach(async i=>{
             await WorkWin.create({
                 workId:newWork.id,
                 descriptionHy: i.descriptionHy,
@@ -82,9 +97,27 @@ const deleteItem = async (req,res) => {
         console.log("something went wrong",e);
     }
 }
+
+const edit = async (req,res) => {
+    try {
+        const {id,titleHy,titleEn,descriptionHy,descriptionEn,month,day} = req.body
+        const work = await Work.findOne({where:{id}})
+        work.titleHy = titleHy
+        work.titleEn = titleEn
+        work.descriptionHy = descriptionHy
+        work.descriptionEn = descriptionEn
+        work.month = month
+        work.day = day
+        await work.save()
+        return res.json(work)
+    }catch (e) {
+        console.log("somrthing went wrong",e)
+    }
+}
 module.exports = {
     getAll,
     getSingle,
     create,
-    deleteItem
+    deleteItem,
+    edit
 }

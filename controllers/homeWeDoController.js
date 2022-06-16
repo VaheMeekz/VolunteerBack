@@ -14,33 +14,41 @@ const edit = async (req, res) => {
     try {
         const {
             titleHy,
-            titleRu,
             titleEn,
             textHy,
-            textRu,
             textEn,
             image,
-            titleOne,
-            descriptionOne,
-            titleTwo,
-            descriptionTwo,
-            titleThree,
-            descriptionThree
+            titleOneHy,
+            titleOneEn,
+            descriptionOneHy,
+            descriptionOneEn,
+            titleTwoHy,
+            titleTwoEn,
+            descriptionTwoHy,
+            descriptionTwoEn,
+            titleThreeHy,
+            titleThreeEn,
+            descriptionThreeHy,
+            descriptionThreeEn
         } = req.body
         const weDo = await WeDo.findOne({where: {id: 1}})
         weDo.titleHy = titleHy
-        weDo.titleRu = titleRu
         weDo.titleEn = titleEn
         weDo.textHy = textHy
-        weDo.textRu = textRu
         weDo.textEn = textEn
         weDo.image = image
-        weDo.titleOne = titleOne
-        weDo.descriptionOne = descriptionOne
-        weDo.titleTwo = titleTwo
-        weDo.descriptionTwo = descriptionTwo
-        weDo.titleThree = titleThree
-        weDo.descriptionThree = descriptionThree
+        weDo.titleOneHy = titleOneHy
+        weDo.titleOneEn = titleOneEn
+        weDo.descriptionOneHy = descriptionOneHy
+        weDo.descriptionOneEn = descriptionOneEn
+        weDo.titleTwoHy = titleTwoHy
+        weDo.titleTwoEn = titleTwoEn
+        weDo.descriptionTwoHy = descriptionTwoHy
+        weDo.descriptionTwoEn = descriptionTwoEn
+        weDo.titleThreeHy = titleThreeHy
+        weDo.titleThreeEn = titleThreeEn
+        weDo.descriptionThreeHy = descriptionThreeHy
+        weDo.descriptionThreeEn = descriptionThreeEn
         await weDo.save()
         return res.json(weDo)
     } catch (e) {

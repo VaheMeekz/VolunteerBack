@@ -6,7 +6,7 @@ const adminMiddleware = require('../middleware/adminMiddleware')
 //user routes
 router.get('/', homeWeDoController.getAll)
 //admin routes
-router.post('/create', adminMiddleware, homeWeDoController.edit)
+router.post('/edit', adminMiddleware, homeWeDoController.edit)
 
 
 //user routes
