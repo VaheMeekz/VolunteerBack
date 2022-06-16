@@ -8,45 +8,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      titleHy: {
-        type: Sequelize.STRING
-      },
-      titleRu: {
-        type: Sequelize.STRING
-      },
-      titleEn: {
-        type: Sequelize.STRING
-      },
-      textHy: {
-        type: Sequelize.STRING
-      },
-      textRu: {
-        type: Sequelize.STRING
-      },
-      textEn: {
-        type: Sequelize.STRING
-      },
-      image: {
-        type: Sequelize.STRING
-      },
-      titleOne: {
-        type: Sequelize.STRING
-      },
-      descriptionOne: {
-        type: Sequelize.STRING
-      },
-      titleTwo: {
-        type: Sequelize.STRING
-      },
-      descriptionTwo: {
-        type: Sequelize.STRING
-      },
-      titleThree: {
-        type: Sequelize.STRING
-      },
-      descriptionThree: {
-        type: Sequelize.STRING
-      },
+      titleHy: Sequelize.STRING,
+      titleEn: Sequelize.STRING,
+      textHy: Sequelize.STRING(1234),
+      textEn: Sequelize.STRING(1234),
+      image: Sequelize.STRING,
+      titleOneHy: Sequelize.STRING,
+      titleOneEn: Sequelize.STRING,
+      descriptionOneHy: Sequelize.STRING(1234),
+      descriptionOneEn: Sequelize.STRING(1234),
+      titleTwoHy: Sequelize.STRING,
+      titleTwoEn: Sequelize.STRING,
+      descriptionTwoHy: Sequelize.STRING(1234),
+      descriptionTwoEn: Sequelize.STRING(1234),
+      titleThreeHy: Sequelize.STRING,
+      titleThreeEn: Sequelize.STRING,
+      descriptionThreeHy: Sequelize.STRING(1234),
+      descriptionThreeEn: Sequelize.STRING(1234),
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
