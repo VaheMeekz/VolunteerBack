@@ -183,6 +183,38 @@ const project = [
 
 ]
 
+const aboutBanner = [
+    {
+        titleHy: "About title hy 1",
+        titleRu: "About title ru",
+        titleEn: "About title en",
+        video: "https://ankawahc.org/wp-content/uploads/2021/06/Asset-1@2x-50.jpg",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    }, {
+        titleHy: "About title hy 2",
+        titleRu: "About title ru",
+        titleEn: "About title en",
+        video: "https://ankawahc.org/wp-content/uploads/2021/06/Asset-1@2x-50.jpg",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    }, {
+        titleHy: "About title hy 3",
+        titleRu: "About title ru",
+        titleEn: "About title en",
+        video: "https://ankawahc.org/wp-content/uploads/2021/06/Asset-1@2x-50.jpg",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    }, {
+        titleHy: "About title hy 4",
+        titleRu: "About title ru",
+        titleEn: "About title en",
+        video: "https://ankawahc.org/wp-content/uploads/2021/06/Asset-1@2x-50.jpg",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    }
+]
+
 module.exports = {
     contacts,
     aboutUs,
@@ -190,5 +222,6 @@ module.exports = {
     homeAbout,
     homeWeDo,
     parner,
-    project
+    project,
+    aboutBanner
 }

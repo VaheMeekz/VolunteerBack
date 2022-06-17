@@ -12,7 +12,7 @@ const edit = async (req,res) => {
         await item.save()
         return res.json(item)
     }catch (e) {
-        console.log('something went wrong',e``)
+        console.log('something went wrong',e)
     }
 }
 
