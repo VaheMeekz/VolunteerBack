@@ -15,6 +15,7 @@ const contactsRouter = require('./routes/contacts')
 const contactUsRouter = require('./routes/contactUs')
 const aboutUsRouter = require('./routes/aboutUs')
 const partnerRouter = require('./routes/partners')
+const projectRouter = require('./routes/projects')
 require('dotenv').config()
 var app = express();
 app.use(cors())
@@ -38,7 +39,8 @@ app.use('/api/v1/work', workRouter) //+
 app.use('/api/v1/contacts', contactsRouter) //+
 app.use('/api/v1/contactUs', contactUsRouter) //+
 app.use('/api/v1/aboutUs',aboutUsRouter)//+
-app.use('/api/v1/partner',partnerRouter)
+app.use('/api/v1/partner',partnerRouter) //+
+app.use('/api/v1/project',projectRouter) // -
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
