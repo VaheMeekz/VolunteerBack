@@ -92,10 +92,46 @@ const homeWeDo =[
     }
 ]
 
+const parner = [
+    {
+        namee:"Logo ipsum",
+        image: "https://img.freepik.com/free-vector/logo-lorem-ipsum-slogan-here-design-art-template_642953-130.jpg?size=338&ext=jpg",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    },{
+        namee:"Logo ipsum",
+        image: "https://img.freepik.com/free-vector/logo-lorem-ipsum-slogan-here-design-art-template_642953-131.jpg?size=338&ext=jpg",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    },{
+        namee:"Logo ipsum",
+        image: "https://img.freepik.com/free-vector/logo-lorem-ipsum-slogan-here-design-art-template_642953-132.jpg?size=338&ext=jpg",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    },
+    {
+        namee:"Logo ipsum",
+        image: "https://img.freepik.com/free-vector/logo-lorem-ipsum-slogan-here-design-art-template_642953-130.jpg?size=338&ext=jpg",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    },{
+        namee:"Logo ipsum",
+        image: "https://img.freepik.com/free-vector/logo-lorem-ipsum-slogan-here-design-art-template_642953-131.jpg?size=338&ext=jpg",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    },{
+        namee:"Logo ipsum",
+        image: "https://img.freepik.com/free-vector/logo-lorem-ipsum-slogan-here-design-art-template_642953-132.jpg?size=338&ext=jpg",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    }
+]
+
 module.exports = {
     contacts,
     aboutUs,
     homeBanner,
     homeAbout,
-    homeWeDo
+    homeWeDo,
+    parner
 }
