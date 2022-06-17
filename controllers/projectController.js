@@ -14,7 +14,7 @@ const create = async (req, res) => {
             descriptionTwoHy,
             descriptionTwoEn
         } = req.body
-        const newProject = await Project({
+        const project = await Project.create({
             titleOneHy,
             titleOneEn,
             descriptionOneHy,
@@ -25,7 +25,7 @@ const create = async (req, res) => {
             descriptionTwoHy,
             descriptionTwoEn
         })
-        return res.json(newProject)
+        return res.json(project)
     } catch (e) {
         console.log("something went wrong", e)
     }
@@ -54,7 +54,9 @@ const getSingle = async (req, res) => {
 
 const deleteItem = async (req, res) => {
     try {
-
+        const {id} = req.body
+        await Project.destroy({where:{id}})
+        return res.json({success:true})
     } catch (e) {
         console.log("something went wrong", e)
     }
@@ -62,7 +64,19 @@ const deleteItem = async (req, res) => {
 
 const edit = async (req, res) => {
     try {
-
+        const {id,titleOneHy,titleOneEn,descriptionOneHy,descriptionOneEn,image,titleTwoHy,titleTwoEn,descriptionTwoHy,descriptionTwoEn} = req.body
+        const item = await Project.findOne({where:{id}})
+        item.titleOneHy = titleOneHy
+        item.titleOneEn = titleOneEn
+        item.descriptionOneHy = descriptionOneHy
+        item.descriptionOneEn = descriptionOneEn
+        item.image = image
+        item.titleTwoHy = titleTwoHy
+        item.titleTwoEn = titleTwoEn
+        item.descriptionTwoHy = descriptionTwoHy
+        item.descriptionTwoEn = descriptionTwoEn
+        await item.save()
+        return res.json(item)
     } catch (e) {
         console.log("something went wrong", e)
     }
