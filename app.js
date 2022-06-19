@@ -4,9 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors')
-const multer = require('multer')
 const bodyParser = require("body-parser");
-const fs = require('fs')
+const fileUpload = require('express-fileupload')
 var indexRouter = require('./routes/index');
 const adminRoute = require('./routes/admin')
 const homeBannerRouter = require('./routes/homeBanner')
@@ -22,6 +21,8 @@ const projectRouter = require('./routes/projects')
 const aboutBanner = require("./routes/aboutUsBanner")
 //
 const staticController = require("./controllers/staticConroller")
+const adminMiddleware = require("./middleware/adminMiddleware")
+//
 require('dotenv').config()
 var app = express();
 app.use(cors())
@@ -38,7 +39,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload({}))
+app.use(express.static(path.resolve(__dirname,'static')))
 
 app.use('/', indexRouter);
 app.use('/api/v1/admin', adminRoute) //+
@@ -54,26 +57,8 @@ app.use('/api/v1/partner', partnerRouter) //+
 app.use('/api/v1/project', projectRouter) //+
 app.use('/api/v1/aboutUsBanner', aboutBanner) //+
 
-const upload = multer({});
-app.post('/upload', upload.any(),async (req, res) => {
-    try {
-        const {file} = req.body;
-        console.log(file, "name")
-        name="test"
-        const filePath = path.resolve(__dirname, '..', 'static')
-        const fileName = String(name) + '.pdf';
-        if (!fs.existsSync(filePath)) {
-            fs.mkdirSync(filePath, {recursive: true})
-        }
-        const tmp = await fs.writeFileSync(
-            path.join(filePath, fileName),
-            file,
-        );
-        return res.json(tmp)
-    } catch (e) {
-        console.log("something went wrong", e)
-    }
-});
+app.post('/upload',adminMiddleware,staticController.upload);
+app.get('/upload',staticController.getAll);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
