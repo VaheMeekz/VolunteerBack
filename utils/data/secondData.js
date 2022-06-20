@@ -215,6 +215,35 @@ const aboutBanner = [
     }
 ]
 
+const files = [
+    {
+        fileName: "first.pdf",
+        nameHy: "First hy",
+        nameEn: "First En",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    },
+    {
+        fileName: "second.pdf",
+        nameHy: "second hy",
+        nameEn: "second En",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    },{
+        fileName: "tree.pdf",
+        nameHy: "tree hy",
+        nameEn: "tree En",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    },{
+        fileName: "for.pdf",
+        nameHy: "for hy",
+        nameEn: "for En",
+        updatedAt: "2022-06-09T07:10:14.369Z",
+        createdAt: "2022-06-09T07:10:14.369Z",
+    }
+]
+
 module.exports = {
     contacts,
     aboutUs,
@@ -223,5 +252,6 @@ module.exports = {
     homeWeDo,
     parner,
     project,
-    aboutBanner
+    aboutBanner,
+    files
 }
