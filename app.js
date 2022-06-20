@@ -6,6 +6,7 @@ var logger = require('morgan');
 const cors = require('cors')
 const bodyParser = require("body-parser");
 const fileUpload = require('express-fileupload')
+const fileService = require("./services/fileService")
 var indexRouter = require('./routes/index');
 const adminRoute = require('./routes/admin')
 const homeBannerRouter = require('./routes/homeBanner')
@@ -62,21 +63,22 @@ app.get('/api/v1/upload', staticController.getAll);
 app.post('/api/v1/upload', staticController.upload);
 app.post('/api/v1/upload/delete', adminMiddleware, async (req, res) => {
     try {
-        const {name} = req.body
-        const path = __dirname + '/' + 'static' + '/' + name + '.pdf'
+        const {name, id} = req.body
+        const path = __dirname + '/' + 'static' + '/' + name
         fs.unlinkSync(path, {
             force: true,
         }, e => {
             if (e) {
                 console.log("eeeeee", e)
-            } else {
-                return res.json({success: true})
             }
         })
+        fileService.del(id)
+        return res.json({succses: true})
     } catch (e) {
         console.log("something went wrong", e)
     }
 })
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
