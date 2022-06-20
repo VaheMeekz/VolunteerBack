@@ -59,7 +59,7 @@ app.use('/api/v1/aboutUs', aboutUsRouter)//+
 app.use('/api/v1/partner', partnerRouter) //+
 app.use('/api/v1/project', projectRouter) //+
 app.use('/api/v1/aboutUsBanner', aboutBanner) //+
-app.use('/api/v1/event', eventRouter) //-
+app.use('/api/v1/event', eventRouter) //+
 
 app.get('/api/v1/upload', staticController.getAll);
 app.post('/api/v1/upload', staticController.upload);
