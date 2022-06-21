@@ -6,7 +6,7 @@ const adminMiddleware = require('../middleware/adminMiddleware')
 //user routes
 router.get('/', newsController.getAll)
 router.get('/single', newsController.getSingle)
-
+router.get('/newsAdmin',newsController.getAdmin)
 //admin routes
 router.post('/', adminMiddleware, newsController.create)
 router.post('/edit', adminMiddleware, newsController.edit)

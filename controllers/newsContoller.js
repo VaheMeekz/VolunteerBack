@@ -2,6 +2,20 @@ const News = require("../models").News
 const {Op} = require('sequelize');
 const getAll = async (req, res) => {
     try {
+        const page = req.query.page || 1
+        const pageSize = page * 8;
+        const all = await News.findAll()
+        const news = await News.findAll({
+            limit: pageSize,
+        })
+        return res.json({products: news,count:all.length})
+    } catch (e) {
+        console.log("something went wrong", e)
+    }
+}
+
+const getAdmin = async (req, res) => {
+    try {
         const {search} = req.query
         const offset = Number.parseInt(req.query.offset) || 0;
         const limit = Number.parseInt(req.query.limit) || 8;
@@ -17,21 +31,21 @@ const getAll = async (req, res) => {
             offset: offset * limit,
             limit,
         })
-        return res.json({products:news,count:all.length})
+        return res.json({products: news, count: all.length})
     } catch (e) {
         console.log("something went wrong", e)
     }
 }
 
-const getSingle = async (req,res) => {
-    try{
+const getSingle = async (req, res) => {
+    try {
         const {id} = req.query
         const news = await News.findOne({
-            where:{id}
+            where: {id}
         })
         return res.json(news)
-    }catch (e) {
-        console.log("something went wrong",e)
+    } catch (e) {
+        console.log("something went wrong", e)
     }
 }
 
@@ -92,7 +106,7 @@ const edit = async (req, res) => {
             secondSubTextEn
         } = req.body
         const news = await News.findOne({
-          where:{id}
+            where: {id}
         })
         news.image = image
         news.titleHy = titleHy
@@ -114,15 +128,15 @@ const edit = async (req, res) => {
     }
 }
 
-const deleteItem = async (req,res) => {
+const deleteItem = async (req, res) => {
     try {
         const {id} = req.body
         await News.destroy({
-            where:{id}
+            where: {id}
         })
-        return res.json({success:true})
-    }catch (e) {
-        console.log("something went wrong",e)
+        return res.json({success: true})
+    } catch (e) {
+        console.log("something went wrong", e)
     }
 }
 
@@ -131,5 +145,6 @@ module.exports = {
     getSingle,
     create,
     edit,
-    deleteItem
+    deleteItem,
+    getAdmin
 }
